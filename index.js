@@ -1,11 +1,9 @@
 const admin = require("firebase-admin");
 const {initializeApp, applicationDefault} = require("firebase-admin/app");
 const {getMessaging} = require("firebase-admin/messaging");
-import express, {json, response} from "express";
+const express = require("express");
 const cors = require("cors");
-const port = 3000;
-
-process.env.GOOGLE_APPLICATION_CREDENTIALS;
+const port = process.env.port || 3000;
 
 const app = express();
 app.use(express.json());
@@ -61,28 +59,3 @@ app.post("/send", async(req, res) => {
 app.listen(port, () => {
     console.log(`Server running on ${port}`);
 });
-
-// -------
-
-// const express = require('express');
-// const port = 3000;
-// const app = express();
-// const { sendPushNotification } = require('./firebaseMessaging');
-// const registrationToken = 'BASrQkK7_wi3XoCcb7HXtBf3BM7WNwXXXv5fILi7jU7cm4SLDQTyEN1CTrvTAw9cJfvi3KC27O1OWEbVbfp_Pp8'; // Replace with the actual device token
-// const notificationTitle = 'Your Notification Title';
-// const notificationBody = 'Your Notification Body';
-// app.use(express.json());
-// // BASrQkK7_wi3XoCcb7HXtBf3BM7WNwXXXv5fILi7jU7cm4SLDQTyEN1CTrvTAw9cJfvi3KC27O1OWEbVbfp_Pp8
-
-
-// sendPushNotification(registrationToken, notificationTitle, notificationBody)
-//   .then((response) => {
-//     console.log('Successfully sent message:', response);
-//   })
-//   .catch((error) => {
-//     console.error('Error sending message:', error);
-//   });
-
-// app.listen(port, () => {
-//     console.log(`Server running on port ${port}`);
-// });
